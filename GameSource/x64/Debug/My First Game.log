@@ -1,0 +1,6 @@
+﻿  game.cpp
+C:\Users\egor_\source\repos\My First Game\My First Game\renderer.cpp(40,9): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\egor_\source\repos\My First Game\My First Game\renderer.cpp(41,9): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\egor_\source\repos\My First Game\My First Game\renderer.cpp(42,9): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\egor_\source\repos\My First Game\My First Game\renderer.cpp(43,9): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+  My First Game.vcxproj -> C:\Users\egor_\source\repos\My First Game\x64\Debug\My First Game.exe
