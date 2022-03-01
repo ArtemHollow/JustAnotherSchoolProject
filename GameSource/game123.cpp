@@ -2,7 +2,7 @@
 #define pressed(b) (input->buttons[b].is_down && input->buttons[b].changed)
 #define released(b) (!input->buttons[b].is_down && input->buttons[b].changed)
 
-float player_1_p, player_1_dp, player_2_p, player_2_dp;
+float player_1_p, player_1_dp, player_2_p, player_2_dp, eyes_1_p, eyes_2_p;
 float arena_half_size_x = 85, arena_half_size_y = 45;
 float player_half_size_x = 2.5, player_half_size_y = 12;
 float ball_p_x, ball_p_y, ball_dp_x = 130, ball_dp_y, ball_half_size = 1;
@@ -44,8 +44,8 @@ bool enemy_is_ai;
 
 internal void
 simulate_game(Input* input, float dt) {
-	clear_screen(0xff5500);
-	draw_rect(0, 0, arena_half_size_x, arena_half_size_y, 0xffaa33);
+	clear_screen(0x80d0e8);
+	draw_rect(0, 0, arena_half_size_x, arena_half_size_y, 0xdedede);
 
 	if (current_gamemode == GM_GAMEPLAY) {
 		float player_1_ddp = 0.f;
@@ -62,8 +62,8 @@ simulate_game(Input* input, float dt) {
 		}
 
 		float player_2_ddp = 0.f;
-		if (is_down(BUTTON_W)) player_2_ddp += 2000;
-		if (is_down(BUTTON_S)) player_2_ddp -= 2000;
+		if (is_down(BUTTON_W)) player_2_ddp += 1300;
+		if (is_down(BUTTON_S)) player_2_ddp -= 1300;
 
 		simulate_player(&player_1_p, &player_1_dp, player_1_ddp, dt);
 		simulate_player(&player_2_p, &player_2_dp, player_2_ddp, dt);
@@ -107,14 +107,28 @@ simulate_game(Input* input, float dt) {
 				player_2_score++;
 			}
 		}
-
-		draw_number(player_1_score, -10, 40, 1.f, 0xbbffbb);
-		draw_number(player_2_score, 10, 40, 1.f, 0xbbffbb);
+		draw_number(player_1_score, -10, 40, 1.f, 0x433f61);
+		draw_number(player_2_score, 10, 40, 1.f, 0x433f61);
 
 		draw_rect(ball_p_x, ball_p_y, ball_half_size, ball_half_size, 0xffffff);
 
+		draw_rect(40, player_1_p - 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
 		draw_rect(80, player_1_p, player_half_size_x, player_half_size_y, 0xff0000);
+		draw_rect(75, player_1_p + 3, player_half_size_x - 0.75, player_half_size_y - 10.8, 0x000000);
+		draw_rect(75, player_1_p + 3, player_half_size_x - 1, player_half_size_y - 11, 0xffffff);
+		draw_rect(75, player_1_p + 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
+		draw_rect(75, player_1_p - 3, player_half_size_x - 0.75, player_half_size_y - 10.8, 0x000000);
+		draw_rect(75, player_1_p - 3, player_half_size_x - 1, player_half_size_y - 11, 0xffffff);
+		draw_rect(75, player_1_p + 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
+		draw_rect(75, player_1_p - 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
 		draw_rect(-80, player_2_p, player_half_size_x, player_half_size_y, 0xff0000);
+		draw_rect(-75, player_2_p + 3, player_half_size_x - 0.75, player_half_size_y - 10.8, 0x000000);
+		draw_rect(-75, player_2_p + 3, player_half_size_x - 1, player_half_size_y - 11, 0xffffff);
+		draw_rect(-75, player_2_p + 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
+		draw_rect(-75, player_2_p - 3, player_half_size_x - 0.75, player_half_size_y - 10.8, 0x000000);
+		draw_rect(-75, player_2_p - 3, player_half_size_x - 1, player_half_size_y - 11, 0xffffff);
+		draw_rect(-75, player_2_p + 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
+		draw_rect(-75, player_2_p - 3, player_half_size_x - 1.5, player_half_size_y - 11.5, 0x000000);
 	} else {
 
 		if (pressed(BUTTON_LEFT) || pressed(BUTTON_RIGHT)) {
